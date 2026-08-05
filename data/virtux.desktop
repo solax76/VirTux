@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=VirTux
+GenericName=Virtual Machine Manager
+GenericName[it]=Gestore di macchine virtuali
+Comment=Manage KVM/libvirt virtual machines
+Comment[it]=Gestisci macchine virtuali KVM/libvirt
+Exec=virtux
+Icon=virtux
+Terminal=false
+Categories=System;Emulator;
+Keywords=virtual;machine;vm;kvm;qemu;libvirt;virtualization;
+Keywords[it]=macchina;virtuale;vm;kvm;qemu;libvirt;virtualizzazione;
+StartupNotify=true
+StartupWMClass=VirTux

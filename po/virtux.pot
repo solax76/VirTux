@@ -1,0 +1,690 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the VirTux package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: VirTux 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-05 15:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: virtux/__main__.py:83
+msgid "Manage KVM/libvirt virtual machines."
+msgstr ""
+
+#: virtux/__main__.py:89
+msgid "libvirt connection URI for this run, e.g. qemu:///system"
+msgstr ""
+
+#: virtux/__main__.py:95
+msgid ""
+"interface language: a code such as “it”, or “auto” to follow the system "
+"locale. Defaults to English."
+msgstr ""
+
+#: virtux/commands.py:21
+msgid "no state"
+msgstr ""
+
+#: virtux/commands.py:22
+msgid "running"
+msgstr ""
+
+#: virtux/commands.py:23
+msgid "blocked"
+msgstr ""
+
+#: virtux/commands.py:24
+msgid "paused"
+msgstr ""
+
+#: virtux/commands.py:25
+msgid "shutting down"
+msgstr ""
+
+#: virtux/commands.py:26
+msgid "stopped"
+msgstr ""
+
+#: virtux/commands.py:27
+msgid "crashed"
+msgstr ""
+
+#: virtux/commands.py:28
+msgid "suspended"
+msgstr ""
+
+#: virtux/commands.py:29
+msgid "unknown"
+msgstr ""
+
+#: virtux/commands.py:80
+msgid "Start"
+msgstr ""
+
+#: virtux/commands.py:83
+msgid "Boot the virtual machine"
+msgstr ""
+
+#: virtux/commands.py:84
+#, python-brace-format
+msgid "{name} started"
+msgstr ""
+
+#: virtux/commands.py:88
+msgid "Restore saved state"
+msgstr ""
+
+#: virtux/commands.py:91
+msgid "Resume the machine from its saved state"
+msgstr ""
+
+#: virtux/commands.py:92
+#, python-brace-format
+msgid "{name} restored from the saved state"
+msgstr ""
+
+#: virtux/commands.py:96
+msgid "Pause"
+msgstr ""
+
+#: virtux/commands.py:99
+msgid "Suspend the machine, keeping it in memory"
+msgstr ""
+
+#: virtux/commands.py:100
+#, python-brace-format
+msgid "{name} paused"
+msgstr ""
+
+#: virtux/commands.py:104
+msgid "Resume"
+msgstr ""
+
+#: virtux/commands.py:107
+msgid "Resume the paused machine"
+msgstr ""
+
+#: virtux/commands.py:108
+#, python-brace-format
+msgid "{name} resumed"
+msgstr ""
+
+#: virtux/commands.py:112 virtux/dialogs.py:307
+msgid "Shut down"
+msgstr ""
+
+#: virtux/commands.py:115
+msgid "Ask the guest OS to shut down cleanly"
+msgstr ""
+
+#: virtux/commands.py:116
+#, python-brace-format
+msgid "Shutdown requested for {name}"
+msgstr ""
+
+#: virtux/commands.py:120 virtux/dialogs.py:308
+msgid "Reboot"
+msgstr ""
+
+#: virtux/commands.py:123
+msgid "Ask the guest OS to reboot cleanly"
+msgstr ""
+
+#: virtux/commands.py:124
+#, python-brace-format
+msgid "Reboot requested for {name}"
+msgstr ""
+
+#: virtux/commands.py:128 virtux/dialogs.py:309
+msgid "Force reboot"
+msgstr ""
+
+#: virtux/commands.py:131
+msgid "Reset the machine immediately, like the physical reset button"
+msgstr ""
+
+#: virtux/commands.py:133
+#, python-brace-format
+msgid "Force reboot “{name}”?"
+msgstr ""
+
+#: virtux/commands.py:135
+msgid ""
+"The machine is reset immediately without telling the guest OS. Unsaved data "
+"will be lost."
+msgstr ""
+
+#: virtux/commands.py:138
+#, python-brace-format
+msgid "{name} was reset"
+msgstr ""
+
+#: virtux/commands.py:142 virtux/dialogs.py:310
+msgid "Force stop"
+msgstr ""
+
+#: virtux/commands.py:145
+msgid "Power the machine off immediately"
+msgstr ""
+
+#: virtux/commands.py:147
+#, python-brace-format
+msgid "Force stop “{name}”?"
+msgstr ""
+
+#: virtux/commands.py:149
+msgid "This is like pulling the power cord. Unsaved data will be lost."
+msgstr ""
+
+#: virtux/commands.py:151
+#, python-brace-format
+msgid "{name} was forced off"
+msgstr ""
+
+#: virtux/commands.py:155 virtux/dialogs.py:311
+msgid "Save state"
+msgstr ""
+
+#: virtux/commands.py:158
+msgid "Write memory and CPU state to disk, then stop the machine"
+msgstr ""
+
+#: virtux/commands.py:159
+#, python-brace-format
+msgid "State of {name} saved"
+msgstr ""
+
+#: virtux/commands.py:163 virtux/dialogs.py:312
+msgid "Discard saved state"
+msgstr ""
+
+#: virtux/commands.py:166
+msgid "Delete the saved state so the machine boots from scratch"
+msgstr ""
+
+#: virtux/commands.py:168
+#, python-brace-format
+msgid "Discard the saved state of “{name}”?"
+msgstr ""
+
+#: virtux/commands.py:170
+msgid ""
+"The saved memory image is deleted and the machine will cold-boot next time "
+"it is started."
+msgstr ""
+
+#: virtux/commands.py:173
+#, python-brace-format
+msgid "Saved state of {name} discarded"
+msgstr ""
+
+#: virtux/commands.py:177
+msgid "Viewer"
+msgstr ""
+
+#: virtux/commands.py:180
+msgid "Open the graphical console"
+msgstr ""
+
+#: virtux/dialogs.py:39 virtux/dialogs.py:202 virtux/dialogs.py:272
+msgid "Cancel"
+msgstr ""
+
+#: virtux/dialogs.py:127
+#, python-brace-format
+msgid "New snapshot of {name}"
+msgstr ""
+
+#: virtux/dialogs.py:131 virtux/window.py:319 virtux/window.py:862
+msgid "Name"
+msgstr ""
+
+#: virtux/dialogs.py:140
+msgid "Description"
+msgstr ""
+
+#: virtux/dialogs.py:143
+msgid "Internal — stored inside the disk image"
+msgstr ""
+
+#: virtux/dialogs.py:145
+msgid "Internal — full checkpoint including memory"
+msgstr ""
+
+#: virtux/dialogs.py:147
+msgid "External — disk-only overlay files"
+msgstr ""
+
+#: virtux/dialogs.py:153
+msgid "Mode"
+msgstr ""
+
+#: virtux/dialogs.py:160
+msgid "Freeze guest filesystems first"
+msgstr ""
+
+#: virtux/dialogs.py:165
+msgid "This machine has no qemu-guest-agent channel configured."
+msgstr ""
+
+#: virtux/dialogs.py:174
+msgid ""
+"While this machine is running, libvirt cannot take an internal snapshot: its "
+"UEFI NVRAM image is in raw format, and a full checkpoint would have to "
+"include it. Shut the machine down to take an internal snapshot, or use an "
+"external one now."
+msgstr ""
+
+#: virtux/dialogs.py:183
+msgid ""
+"An internal snapshot works because the machine is shut off. While it is "
+"running, only external snapshots are possible."
+msgstr ""
+
+#: virtux/dialogs.py:189
+msgid "An internal snapshot of a running machine also stores its memory."
+msgstr ""
+
+#: virtux/dialogs.py:193
+msgid ""
+"External snapshots never include memory, and the overlay files are written "
+"next to the disk image, so QEMU needs write access there."
+msgstr ""
+
+#: virtux/dialogs.py:202
+msgid "Create"
+msgstr ""
+
+#: virtux/dialogs.py:241 virtux/dialogs.py:321 virtux/window.py:114
+msgid "Preferences"
+msgstr ""
+
+#: virtux/dialogs.py:244
+msgid "Connection URI"
+msgstr ""
+
+#: virtux/dialogs.py:246
+msgid "Changing this reconnects. Example: qemu:///system"
+msgstr ""
+
+#: virtux/dialogs.py:255
+msgid "Viewer command"
+msgstr ""
+
+#: virtux/dialogs.py:258
+msgid ""
+"The connection URI and the machine name are appended automatically. Extra "
+"flags are allowed, e.g. “virt-viewer --full-screen”."
+msgstr ""
+
+#: virtux/dialogs.py:270
+msgid "Refresh interval (seconds)"
+msgstr ""
+
+#: virtux/dialogs.py:272
+msgid "Apply"
+msgstr ""
+
+#: virtux/dialogs.py:303
+msgid "Machine"
+msgstr ""
+
+#: virtux/dialogs.py:305
+msgid "Start / restore saved state"
+msgstr ""
+
+#: virtux/dialogs.py:306
+msgid "Pause / resume"
+msgstr ""
+
+#: virtux/dialogs.py:313
+msgid "Open the viewer"
+msgstr ""
+
+#: virtux/dialogs.py:317 virtux/window.py:861
+msgid "General"
+msgstr ""
+
+#: virtux/dialogs.py:319
+msgid "New snapshot"
+msgstr ""
+
+#: virtux/dialogs.py:320 virtux/window.py:127
+msgid "Refresh now"
+msgstr ""
+
+#: virtux/dialogs.py:322
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: virtux/dialogs.py:323 virtux/window.py:119
+msgid "Quit"
+msgstr ""
+
+#: virtux/dialogs.py:333 virtux/window.py:115
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: virtux/dialogs.py:358 virtux/window.py:118
+msgid "About VirTux"
+msgstr ""
+
+#: virtux/dialogs.py:368
+#, python-brace-format
+msgid "Version {version}"
+msgstr ""
+
+#: virtux/dialogs.py:369
+msgid "A GTK4 manager for KVM/libvirt virtual machines"
+msgstr ""
+
+#: virtux/dialogs.py:370 virtux/window.py:645
+#, python-brace-format
+msgid "Connected to {uri}"
+msgstr ""
+
+#: virtux/dialogs.py:376
+msgid "Close"
+msgstr ""
+
+#: virtux/widgets.py:124
+msgid "Dismiss"
+msgstr ""
+
+#: virtux/widgets.py:308
+msgid "CPU"
+msgstr ""
+
+#: virtux/widgets.py:312
+msgid "Memory"
+msgstr ""
+
+#: virtux/widgets.py:320 virtux/window.py:982
+msgid "Start the machine to see live statistics."
+msgstr ""
+
+#: virtux/widgets.py:354
+msgid "sampling…"
+msgstr ""
+
+#: virtux/widgets.py:362
+#, python-brace-format
+msgid "n/a of {total}"
+msgstr ""
+
+#: virtux/widgets.py:366
+msgid ""
+"Memory usage needs the guest balloon driver (install qemu-guest-agent / "
+"virtio drivers in the guest)."
+msgstr ""
+
+#: virtux/window.py:123
+msgid "Main menu"
+msgstr ""
+
+#: virtux/window.py:136
+msgid "Virtual machines"
+msgstr ""
+
+#: virtux/window.py:202
+msgid "Select a virtual machine"
+msgstr ""
+
+#: virtux/window.py:286
+msgid "Info"
+msgstr ""
+
+#: virtux/window.py:288
+msgid "Snapshots"
+msgstr ""
+
+#: virtux/window.py:294
+msgid "Performance"
+msgstr ""
+
+#: virtux/window.py:320
+msgid "Created"
+msgstr ""
+
+#: virtux/window.py:321
+msgid "State"
+msgstr ""
+
+#: virtux/window.py:322
+msgid "Current"
+msgstr ""
+
+#: virtux/window.py:328
+msgid "This machine has no snapshots yet."
+msgstr ""
+
+#: virtux/window.py:333
+msgid "New snapshot…"
+msgstr ""
+
+#: virtux/window.py:335 virtux/window.py:565
+msgid "Revert"
+msgstr ""
+
+#: virtux/window.py:337 virtux/window.py:588
+msgid "Delete"
+msgstr ""
+
+#: virtux/window.py:413 virtux/window.py:518
+msgid "No machine selected"
+msgstr ""
+
+#: virtux/window.py:418
+#, python-brace-format
+msgid "“{action}” is not available for {name} ({state})"
+msgstr ""
+
+#: virtux/window.py:482
+#, python-brace-format
+msgid "{name} has no graphical console configured."
+msgstr ""
+
+#: virtux/window.py:490
+#, python-brace-format
+msgid "“{command}” was not found. Set another one in Preferences."
+msgstr ""
+
+#: virtux/window.py:505
+#, python-brace-format
+msgid "Cannot start the viewer: {error}"
+msgstr ""
+
+#: virtux/window.py:507
+#, python-brace-format
+msgid "Opening the viewer for {name}"
+msgstr ""
+
+#: virtux/window.py:528
+#, python-brace-format
+msgid "Snapshot “{snapshot}” created"
+msgstr ""
+
+#: virtux/window.py:550 virtux/window.py:573
+msgid "No snapshot selected"
+msgstr ""
+
+#: virtux/window.py:558
+#, python-brace-format
+msgid "{name} reverted to “{snapshot}”"
+msgstr ""
+
+#: virtux/window.py:563
+#, python-brace-format
+msgid "Revert “{name}” to snapshot “{snapshot}”?"
+msgstr ""
+
+#: virtux/window.py:564
+msgid ""
+"The current disk and memory state is discarded and replaced by the snapshot."
+msgstr ""
+
+#: virtux/window.py:581
+#, python-brace-format
+msgid "Snapshot “{snapshot}” deleted"
+msgstr ""
+
+#: virtux/window.py:586
+#, python-brace-format
+msgid "Delete snapshot “{snapshot}”?"
+msgstr ""
+
+#: virtux/window.py:587
+#, python-brace-format
+msgid "The snapshot of “{name}” is removed permanently."
+msgstr ""
+
+#: virtux/window.py:626
+#, python-brace-format
+msgid "Cannot save preferences: {error}"
+msgstr ""
+
+#: virtux/window.py:636
+msgid "Preferences saved"
+msgstr ""
+
+#: virtux/window.py:684
+#, python-brace-format
+msgid "Reconnected to {uri}"
+msgstr ""
+
+#: virtux/window.py:712
+#, python-brace-format
+msgid "Virtual machines ({count})"
+msgstr ""
+
+#: virtux/window.py:792
+msgid "Loading…"
+msgstr ""
+
+#: virtux/window.py:863
+msgid "UUID"
+msgstr ""
+
+#: virtux/window.py:864
+msgid "Architecture"
+msgstr ""
+
+#: virtux/window.py:865
+msgid "Machine type"
+msgstr ""
+
+#: virtux/window.py:868
+#, python-brace-format
+msgid "{firmware}, NVRAM {format}"
+msgstr ""
+
+#: virtux/window.py:871
+msgid "Firmware"
+msgstr ""
+
+#: virtux/window.py:872
+msgid "Autostart"
+msgstr ""
+
+#: virtux/window.py:872 virtux/window.py:873
+msgid "no"
+msgstr ""
+
+#: virtux/window.py:872 virtux/window.py:873
+msgid "yes"
+msgstr ""
+
+#: virtux/window.py:873
+msgid "Persistent"
+msgstr ""
+
+#: virtux/window.py:875
+msgid "Saved state"
+msgstr ""
+
+#: virtux/window.py:876
+msgid "none"
+msgstr ""
+
+#: virtux/window.py:876
+msgid "present"
+msgstr ""
+
+#: virtux/window.py:879
+msgid "CPU and memory"
+msgstr ""
+
+#: virtux/window.py:880
+msgid "Virtual CPUs"
+msgstr ""
+
+#: virtux/window.py:881
+msgid "Maximum memory"
+msgstr ""
+
+#: virtux/window.py:882
+msgid "Current allocation"
+msgstr ""
+
+#: virtux/window.py:884
+msgid "Storage"
+msgstr ""
+
+#: virtux/window.py:886
+msgid "No disks attached."
+msgstr ""
+
+#: virtux/window.py:888
+#, python-brace-format
+msgid "{target} ({device}, {bus})"
+msgstr ""
+
+#: virtux/window.py:893
+#, python-brace-format
+msgid "  —  {allocated} used of {capacity}"
+msgstr ""
+
+#: virtux/window.py:899
+msgid "Network"
+msgstr ""
+
+#: virtux/window.py:901
+msgid "No network interfaces."
+msgstr ""
+
+#: virtux/window.py:905
+#, python-brace-format
+msgid "{type} “{source}”, model {model}"
+msgstr ""
+
+#: virtux/window.py:910
+msgid "Graphics"
+msgstr ""
+
+#: virtux/window.py:912
+msgid "No graphical console configured."
+msgstr ""
+
+#: virtux/window.py:914
+msgid "auto"
+msgstr ""
+
+#: virtux/window.py:917
+#, python-brace-format
+msgid "port {port}, listening on {listen}"
+msgstr ""
+
+#: virtux/window.py:931
+#, python-brace-format
+msgid "{state} · state saved"
+msgstr ""
