@@ -16,7 +16,7 @@ gi.require_version("Gtk", "4.0")
 
 from gi.repository import GLib, Gtk  # noqa: E402
 
-from . import __version__  # noqa: E402
+from . import __version__, icons  # noqa: E402
 from .backend import DomainDetails  # noqa: E402
 from .commands import ACCELS  # noqa: E402
 from .config import MAX_REFRESH, MIN_REFRESH, Config  # noqa: E402
@@ -356,7 +356,7 @@ class AboutDialog:
 
     def __init__(self, parent: Gtk.Window, uri: str) -> None:
         self.window, box = _shell(parent, _("About VirTux"), width=380)
-        icon = Gtk.Image.new_from_icon_name("computer-symbolic")
+        icon = Gtk.Image.new_from_icon_name(icons.NAME)
         icon.set_pixel_size(64)
         box.append(icon)
 

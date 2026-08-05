@@ -96,12 +96,46 @@ cp -r "$ROOT/virtux" "$APPDIR/usr/lib/virtux/"
 find "$APPDIR/usr/lib/virtux" -name '__pycache__' -prune -exec rm -rf {} + 2>/dev/null || true
 [ -d "$ROOT/locale" ] && cp -r "$ROOT/locale/." "$APPDIR/usr/share/locale/"
 
-# Desktop entry and icon. appimagetool wants both at the AppDir root.
-cp "$ROOT/data/virtux.desktop" "$APPDIR/virtux.desktop"
-cp "$ROOT/data/virtux.desktop" "$APPDIR/usr/share/applications/virtux.desktop"
-cp "$ROOT/data/icons/virtux.svg" "$APPDIR/virtux.svg"
-cp "$ROOT/data/icons/virtux.svg" "$APPDIR/.DirIcon"
-cp "$ROOT/data/icons/virtux.svg" "$APPDIR/usr/share/icons/hicolor/scalable/apps/virtux.svg"
+# Desktop entry and icon. appimagetool wants both at the AppDir root, and the root
+# icon has to be named after the entry's Icon= key, which is the application id.
+APP_ID="it.dirida.VirTux"
+cp "$ROOT/data/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
+cp "$ROOT/data/$APP_ID.desktop" "$APPDIR/usr/share/applications/$APP_ID.desktop"
+ICON="$ROOT/data/icons/hicolor/scalable/apps/$APP_ID.svg"
+cp "$ICON" "$APPDIR/$APP_ID.svg"
+cp "$ICON" "$APPDIR/usr/share/icons/hicolor/scalable/apps/$APP_ID.svg"
+
+# Raster sizes too. .DirIcon is what the AppImage spec calls for as a 256x256 PNG,
+# and the desktop integration tools that read it — appimaged, AppImageLauncher —
+# do not rasterise SVG.
+render_png() {  # size, destination
+    if [ -n "$RASTERISER" ]; then
+        mkdir -p "$(dirname "$2")"
+        case "$RASTERISER" in
+            rsvg-convert) rsvg-convert -w "$1" -h "$1" "$ICON" -o "$2" ;;
+            magick) magick -background none "$ICON" -resize "${1}x${1}" "$2" ;;
+        esac
+    else
+        return 1
+    fi
+}
+
+RASTERISER=""
+for tool in rsvg-convert magick; do
+    command -v "$tool" >/dev/null 2>&1 && RASTERISER="$tool" && break
+done
+
+if [ -n "$RASTERISER" ]; then
+    say "Rendering PNG icons with $RASTERISER"
+    for size in 16 24 32 48 64 128 256; do
+        render_png "$size" "$APPDIR/usr/share/icons/hicolor/${size}x${size}/apps/$APP_ID.png" \
+            || die "$RASTERISER could not rasterise $ICON"
+    done
+    cp "$APPDIR/usr/share/icons/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/.DirIcon"
+else
+    say "No rsvg-convert or magick: shipping an SVG .DirIcon, which integration tools may ignore"
+    cp "$ICON" "$APPDIR/.DirIcon"
+fi
 
 # -- Python interpreter and standard library --------------------------------
 

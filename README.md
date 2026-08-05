@@ -51,6 +51,28 @@ Tested on Ubuntu 26.04 with GTK 4.22, PyGObject 3.56, libvirt 12.0 and QEMU 10.2
 ./run.sh --lang auto            # follow the system locale
 ```
 
+### The icon, the application menu and the task bar
+
+```sh
+./run.sh --install-desktop-entry     # or: VirTux-*.AppImage --install-desktop-entry
+./run.sh --uninstall-desktop-entry   # to undo it
+```
+
+This copies `it.dirida.VirTux.desktop` and the icon to `~/.local/share`, with
+`Exec` pointing at whatever you ran it from — the checkout's `run.sh` or the
+AppImage's own path. **Do this once, or the task bar shows a generic icon.**
+
+The reason is that a shell has only one way to tell which icon belongs to a
+window: it matches the window's application id against an *installed* desktop
+entry. GNOME's compositor does not implement the `xdg-toplevel-icon` protocol, so
+on Wayland VirTux cannot hand its icon over by itself, and the entry it ships —
+in `data/` in a checkout, inside the mounted image in an AppImage — is in neither
+case somewhere the shell looks. Everything else lines up so that the match
+succeeds once the entry is installed: the application id, the program name, the
+entry's file name and the icon's name are all `it.dirida.VirTux`.
+
+Under X11 the window carries its icon as pixels, so there it is right either way.
+
 ## Keyboard shortcuts
 
 | Shortcut | Action | Shortcut | Action |
@@ -144,6 +166,13 @@ Still required on the target machine:
 - `virt-viewer` for the guest console — it is a separate GTK3 program, so it
   cannot be bundled alongside a GTK4 application
 
+Run the AppImage once with `--install-desktop-entry` to get the icon in the
+application menu and the task bar; see [the section above](#the-icon-the-application-menu-and-the-task-bar)
+for why an AppImage cannot do that on its own. The icon of the `.AppImage` **file**
+in a file manager is a separate matter, and not something the image can settle: it
+needs a desktop-side AppImage integration tool such as `appimaged` or
+AppImageLauncher, which is what reads the `.DirIcon` the build puts in the image.
+
 The first build downloads `appimagetool` into `~/.cache/virtux-build`; after that
 the build is offline. Running the result needs FUSE; on a host without it, use
 `./VirTux-0.1.0-x86_64.AppImage --appimage-extract-and-run`.
@@ -191,7 +220,13 @@ virtux/
 ├── dialogs.py    confirmations, snapshot creation, preferences, shortcuts, about
 ├── config.py     ~/.config/virtux/config.json
 ├── i18n.py       gettext setup
+├── icons.py      the application icon: theme search path and default window icon
+├── integration.py  installs the desktop entry and icon into ~/.local/share
 └── style.css     theme-agnostic styling
+
+data/
+├── it.dirida.VirTux.desktop                        desktop entry
+└── icons/hicolor/scalable/apps/it.dirida.VirTux.svg  the icon itself
 ```
 
 `backend.py` imports no GTK, so it can be driven from a plain Python REPL:

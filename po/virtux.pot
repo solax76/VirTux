@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VirTux 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-05 15:30+0200\n"
+"POT-Creation-Date: 2026-08-05 16:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: virtux/__main__.py:83
+#: virtux/__main__.py:36
+#, python-brace-format
+msgid "Desktop integration failed: {error}"
+msgstr ""
+
+#: virtux/__main__.py:40
+msgid "Nothing was installed, so there is nothing to remove."
+msgstr ""
+
+#: virtux/__main__.py:42
+#, python-brace-format
+msgid "Installed {path}"
+msgstr ""
+
+#: virtux/__main__.py:42
+#, python-brace-format
+msgid "Removed {path}"
+msgstr ""
+
+#: virtux/__main__.py:61
 msgid "Manage KVM/libvirt virtual machines."
 msgstr ""
 
-#: virtux/__main__.py:89
+#: virtux/__main__.py:67
 msgid "libvirt connection URI for this run, e.g. qemu:///system"
 msgstr ""
 
-#: virtux/__main__.py:95
+#: virtux/__main__.py:73
 msgid ""
 "interface language: a code such as “it”, or “auto” to follow the system "
 "locale. Defaults to English."
+msgstr ""
+
+#: virtux/__main__.py:83
+msgid ""
+"copy the desktop entry and the icon to ~/.local/share, so the application "
+"menu and the task bar show VirTux with its own icon, then exit"
+msgstr ""
+
+#: virtux/__main__.py:90
+msgid "remove what --install-desktop-entry copied, then exit"
 msgstr ""
 
 #: virtux/commands.py:21
@@ -245,7 +274,7 @@ msgstr ""
 msgid "New snapshot of {name}"
 msgstr ""
 
-#: virtux/dialogs.py:131 virtux/window.py:319 virtux/window.py:862
+#: virtux/dialogs.py:131 virtux/window.py:321 virtux/window.py:864
 msgid "Name"
 msgstr ""
 
@@ -351,7 +380,7 @@ msgstr ""
 msgid "Open the viewer"
 msgstr ""
 
-#: virtux/dialogs.py:317 virtux/window.py:861
+#: virtux/dialogs.py:317 virtux/window.py:863
 msgid "General"
 msgstr ""
 
@@ -388,13 +417,18 @@ msgstr ""
 msgid "A GTK4 manager for KVM/libvirt virtual machines"
 msgstr ""
 
-#: virtux/dialogs.py:370 virtux/window.py:645
+#: virtux/dialogs.py:370 virtux/window.py:647
 #, python-brace-format
 msgid "Connected to {uri}"
 msgstr ""
 
 #: virtux/dialogs.py:376
 msgid "Close"
+msgstr ""
+
+#: virtux/integration.py:52
+#, python-brace-format
+msgid "{entry} was not found — this copy of VirTux ships no desktop entry."
 msgstr ""
 
 #: virtux/widgets.py:124
@@ -409,7 +443,7 @@ msgstr ""
 msgid "Memory"
 msgstr ""
 
-#: virtux/widgets.py:320 virtux/window.py:982
+#: virtux/widgets.py:320 virtux/window.py:984
 msgid "Start the machine to see live statistics."
 msgstr ""
 
@@ -436,255 +470,255 @@ msgstr ""
 msgid "Virtual machines"
 msgstr ""
 
-#: virtux/window.py:202
+#: virtux/window.py:204
 msgid "Select a virtual machine"
 msgstr ""
 
-#: virtux/window.py:286
+#: virtux/window.py:288
 msgid "Info"
 msgstr ""
 
-#: virtux/window.py:288
+#: virtux/window.py:290
 msgid "Snapshots"
 msgstr ""
 
-#: virtux/window.py:294
+#: virtux/window.py:296
 msgid "Performance"
 msgstr ""
 
-#: virtux/window.py:320
+#: virtux/window.py:322
 msgid "Created"
 msgstr ""
 
-#: virtux/window.py:321
+#: virtux/window.py:323
 msgid "State"
 msgstr ""
 
-#: virtux/window.py:322
+#: virtux/window.py:324
 msgid "Current"
 msgstr ""
 
-#: virtux/window.py:328
+#: virtux/window.py:330
 msgid "This machine has no snapshots yet."
 msgstr ""
 
-#: virtux/window.py:333
+#: virtux/window.py:335
 msgid "New snapshot…"
 msgstr ""
 
-#: virtux/window.py:335 virtux/window.py:565
+#: virtux/window.py:337 virtux/window.py:567
 msgid "Revert"
 msgstr ""
 
-#: virtux/window.py:337 virtux/window.py:588
+#: virtux/window.py:339 virtux/window.py:590
 msgid "Delete"
 msgstr ""
 
-#: virtux/window.py:413 virtux/window.py:518
+#: virtux/window.py:415 virtux/window.py:520
 msgid "No machine selected"
 msgstr ""
 
-#: virtux/window.py:418
+#: virtux/window.py:420
 #, python-brace-format
 msgid "“{action}” is not available for {name} ({state})"
 msgstr ""
 
-#: virtux/window.py:482
+#: virtux/window.py:484
 #, python-brace-format
 msgid "{name} has no graphical console configured."
 msgstr ""
 
-#: virtux/window.py:490
+#: virtux/window.py:492
 #, python-brace-format
 msgid "“{command}” was not found. Set another one in Preferences."
 msgstr ""
 
-#: virtux/window.py:505
+#: virtux/window.py:507
 #, python-brace-format
 msgid "Cannot start the viewer: {error}"
 msgstr ""
 
-#: virtux/window.py:507
+#: virtux/window.py:509
 #, python-brace-format
 msgid "Opening the viewer for {name}"
 msgstr ""
 
-#: virtux/window.py:528
+#: virtux/window.py:530
 #, python-brace-format
 msgid "Snapshot “{snapshot}” created"
 msgstr ""
 
-#: virtux/window.py:550 virtux/window.py:573
+#: virtux/window.py:552 virtux/window.py:575
 msgid "No snapshot selected"
 msgstr ""
 
-#: virtux/window.py:558
+#: virtux/window.py:560
 #, python-brace-format
 msgid "{name} reverted to “{snapshot}”"
 msgstr ""
 
-#: virtux/window.py:563
+#: virtux/window.py:565
 #, python-brace-format
 msgid "Revert “{name}” to snapshot “{snapshot}”?"
 msgstr ""
 
-#: virtux/window.py:564
+#: virtux/window.py:566
 msgid ""
 "The current disk and memory state is discarded and replaced by the snapshot."
 msgstr ""
 
-#: virtux/window.py:581
+#: virtux/window.py:583
 #, python-brace-format
 msgid "Snapshot “{snapshot}” deleted"
 msgstr ""
 
-#: virtux/window.py:586
+#: virtux/window.py:588
 #, python-brace-format
 msgid "Delete snapshot “{snapshot}”?"
 msgstr ""
 
-#: virtux/window.py:587
+#: virtux/window.py:589
 #, python-brace-format
 msgid "The snapshot of “{name}” is removed permanently."
 msgstr ""
 
-#: virtux/window.py:626
+#: virtux/window.py:628
 #, python-brace-format
 msgid "Cannot save preferences: {error}"
 msgstr ""
 
-#: virtux/window.py:636
+#: virtux/window.py:638
 msgid "Preferences saved"
 msgstr ""
 
-#: virtux/window.py:684
+#: virtux/window.py:686
 #, python-brace-format
 msgid "Reconnected to {uri}"
 msgstr ""
 
-#: virtux/window.py:712
+#: virtux/window.py:714
 #, python-brace-format
 msgid "Virtual machines ({count})"
 msgstr ""
 
-#: virtux/window.py:792
+#: virtux/window.py:794
 msgid "Loading…"
 msgstr ""
 
-#: virtux/window.py:863
+#: virtux/window.py:865
 msgid "UUID"
 msgstr ""
 
-#: virtux/window.py:864
+#: virtux/window.py:866
 msgid "Architecture"
 msgstr ""
 
-#: virtux/window.py:865
+#: virtux/window.py:867
 msgid "Machine type"
 msgstr ""
 
-#: virtux/window.py:868
+#: virtux/window.py:870
 #, python-brace-format
 msgid "{firmware}, NVRAM {format}"
 msgstr ""
 
-#: virtux/window.py:871
+#: virtux/window.py:873
 msgid "Firmware"
 msgstr ""
 
-#: virtux/window.py:872
+#: virtux/window.py:874
 msgid "Autostart"
 msgstr ""
 
-#: virtux/window.py:872 virtux/window.py:873
+#: virtux/window.py:874 virtux/window.py:875
 msgid "no"
 msgstr ""
 
-#: virtux/window.py:872 virtux/window.py:873
+#: virtux/window.py:874 virtux/window.py:875
 msgid "yes"
 msgstr ""
 
-#: virtux/window.py:873
+#: virtux/window.py:875
 msgid "Persistent"
 msgstr ""
 
-#: virtux/window.py:875
+#: virtux/window.py:877
 msgid "Saved state"
 msgstr ""
 
-#: virtux/window.py:876
+#: virtux/window.py:878
 msgid "none"
 msgstr ""
 
-#: virtux/window.py:876
+#: virtux/window.py:878
 msgid "present"
 msgstr ""
 
-#: virtux/window.py:879
+#: virtux/window.py:881
 msgid "CPU and memory"
 msgstr ""
 
-#: virtux/window.py:880
+#: virtux/window.py:882
 msgid "Virtual CPUs"
 msgstr ""
 
-#: virtux/window.py:881
+#: virtux/window.py:883
 msgid "Maximum memory"
 msgstr ""
 
-#: virtux/window.py:882
+#: virtux/window.py:884
 msgid "Current allocation"
 msgstr ""
 
-#: virtux/window.py:884
+#: virtux/window.py:886
 msgid "Storage"
 msgstr ""
 
-#: virtux/window.py:886
+#: virtux/window.py:888
 msgid "No disks attached."
 msgstr ""
 
-#: virtux/window.py:888
+#: virtux/window.py:890
 #, python-brace-format
 msgid "{target} ({device}, {bus})"
 msgstr ""
 
-#: virtux/window.py:893
+#: virtux/window.py:895
 #, python-brace-format
 msgid "  —  {allocated} used of {capacity}"
 msgstr ""
 
-#: virtux/window.py:899
+#: virtux/window.py:901
 msgid "Network"
 msgstr ""
 
-#: virtux/window.py:901
+#: virtux/window.py:903
 msgid "No network interfaces."
 msgstr ""
 
-#: virtux/window.py:905
+#: virtux/window.py:907
 #, python-brace-format
 msgid "{type} “{source}”, model {model}"
 msgstr ""
 
-#: virtux/window.py:910
+#: virtux/window.py:912
 msgid "Graphics"
 msgstr ""
 
-#: virtux/window.py:912
+#: virtux/window.py:914
 msgid "No graphical console configured."
 msgstr ""
 
-#: virtux/window.py:914
+#: virtux/window.py:916
 msgid "auto"
 msgstr ""
 
-#: virtux/window.py:917
+#: virtux/window.py:919
 #, python-brace-format
 msgid "port {port}, listening on {listen}"
 msgstr ""
 
-#: virtux/window.py:931
+#: virtux/window.py:933
 #, python-brace-format
 msgid "{state} · state saved"
 msgstr ""
