@@ -59,6 +59,7 @@ class Command:
     enabled: Callable[[VMInfo], bool]
     tooltip: str = ""
     destructive: bool = False
+    suggested: bool = False
     # Confirmation heading/body templates; '{name}' is substituted. Empty = no prompt.
     confirm_heading: str = ""
     confirm_body: str = ""
@@ -82,6 +83,7 @@ COMMANDS: list[Command] = [
         lambda vm: not vm.is_active and not vm.has_saved,
         tooltip=_("Boot the virtual machine"),
         done=_("{name} started"),
+        suggested=lambda vm: not vm.is_active and not vm.has_saved,
     ),
     Command(
         "restore",
@@ -90,6 +92,7 @@ COMMANDS: list[Command] = [
         lambda vm: not vm.is_active and vm.has_saved,
         tooltip=_("Resume the machine from its saved state"),
         done=_("{name} restored from the saved state"),
+        suggested=lambda vm: not vm.is_active and vm.has_saved,
     ),
     Command(
         "pause",
@@ -98,6 +101,7 @@ COMMANDS: list[Command] = [
         _running,
         tooltip=_("Suspend the machine, keeping it in memory"),
         done=_("{name} paused"),
+        suggested=_running,
     ),
     Command(
         "resume",
@@ -106,6 +110,7 @@ COMMANDS: list[Command] = [
         _resumable,
         tooltip=_("Resume the paused machine"),
         done=_("{name} resumed"),
+        suggested=_resumable,
     ),
     Command(
         "shutdown",
@@ -157,6 +162,7 @@ COMMANDS: list[Command] = [
         lambda vm: vm.is_active and (_running(vm) or vm.is_paused),
         tooltip=_("Write memory and CPU state to disk, then stop the machine"),
         done=_("State of {name} saved"),
+        suggested=lambda vm: vm.is_active and (_running(vm) or vm.is_paused),
     ),
     Command(
         "discard-saved",

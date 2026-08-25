@@ -4,9 +4,9 @@ A GTK4 desktop application to manage KVM/libvirt virtual machines: virtual
 machines on the left, everything about the selected one on the right.
 
 ```
-┌─ VirTux ───────────────────── diridell — QEMU 10.2.1 ──────────────── ⟳ ─┐
+┌─ VirTux ───────────────────── diridell — QEMU 10.2.1 ─────────────── ⟳ ─┐
 │ Virtual machines (5) │ win11-lv2024                            running   │
-│  ▶ win10-lv2017      │ [Start][Pause][Shut down][Reboot]      [Viewer]  │
+│  ▶ win10-lv2017      │ [Start][Pause][Shut down][Reboot]      [Viewer]   │
 │    running           │ [Force reboot][Force stop][Save state][Discard]   │
 │  ■ win10-zscaler     ├───────────────────────────────────────────────────┤
 │    stopped           │        Info  │  Snapshots  │  Performance         │

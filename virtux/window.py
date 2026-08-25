@@ -253,6 +253,7 @@ class VirTuxWindow(Gtk.ApplicationWindow):
         outer.append(top)
 
         secondary = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        #secondary.add_css_class("linked")
         for key in cmds.SECONDARY_ROW:
             secondary.append(self._make_action_button(key))
         outer.append(secondary)
@@ -272,6 +273,8 @@ class VirTuxWindow(Gtk.ApplicationWindow):
         button.set_tooltip_text(command.tooltip or command.label)
         if command.destructive:
             button.add_css_class("destructive-action")
+        elif command.suggested:
+            button.add_css_class("suggested-action")
         button.connect("clicked", lambda _b, k=key: self.activate_command(k))
         self._buttons[key] = button
         return button
@@ -280,6 +283,13 @@ class VirTuxWindow(Gtk.ApplicationWindow):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self._stack = Gtk.Stack(vexpand=True)
         self._stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
+        # Pannelli di dettaglio: performance,info, snapshots
+        self._stats = StatsPane()
+        self._stack.add_titled(
+            Gtk.ScrolledWindow(child=self._stats, hscrollbar_policy=Gtk.PolicyType.NEVER),
+            "performance",
+            _("Performance"),
+        )
 
         self._info_grid = InfoGrid()
         self._stack.add_titled(
@@ -287,14 +297,9 @@ class VirTuxWindow(Gtk.ApplicationWindow):
             "info",
             _("Info"),
         )
+
         self._stack.add_titled(self._build_snapshots_page(), "snapshots", _("Snapshots"))
 
-        self._stats = StatsPane()
-        self._stack.add_titled(
-            Gtk.ScrolledWindow(child=self._stats, hscrollbar_policy=Gtk.PolicyType.NEVER),
-            "performance",
-            _("Performance"),
-        )
         self._stack.connect("notify::visible-child-name", self._on_page_changed)
 
         switcher = Gtk.StackSwitcher(stack=self._stack, halign=Gtk.Align.CENTER)
@@ -948,6 +953,11 @@ class VirTuxWindow(Gtk.ApplicationWindow):
                 button.add_css_class("destructive-action")
             else:
                 button.remove_css_class("destructive-action")
+
+            if command.suggested:
+                button.add_css_class("suggested-action")
+            else:
+                button.remove_css_class("suggested-action")
             button.set_sensitive(
                 vm is not None and not self._busy and command.enabled(vm)
             )

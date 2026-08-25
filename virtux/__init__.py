@@ -1,6 +1,6 @@
 """VirTux — a GTK4 desktop manager for KVM/libvirt virtual machines."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # Reverse-DNS application id. It is also the program name, the desktop entry's
 # basename and the icon's name: shells pair a window with its desktop entry — and
