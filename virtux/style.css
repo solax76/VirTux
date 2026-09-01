@@ -19,11 +19,13 @@
 }
 
 .dim-label {
-  opacity: 0.6;
+  opacity: 0.7;
+  color: var(--window-fg-color, @theme_bg_color);
 }
 
 .sidebar {
-  background-color: alpha(currentColor, 0.03);
+  background-color: var(--window-bg-color, @theme_fg_color);
+  color: var(--window-fg-color, @theme_bg_color);
 }
 
 .vm-title {
