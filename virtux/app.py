@@ -18,6 +18,7 @@ from gi.repository import Gdk, Gio, GLib, Gtk  # noqa: E402
 from . import APP_ID, icons  # noqa: E402
 from .backend import Libvirt  # noqa: E402
 from .config import load as load_config  # noqa: E402
+from .theme import ThemeManager  # noqa: E402
 from .window import VirTuxWindow  # noqa: E402
 
 
@@ -37,17 +38,22 @@ class VirTuxApplication(Gtk.Application):
         )
         self._uri = uri
         self.window: VirTuxWindow | None = None
+        self.theme: ThemeManager | None = None
 
     def do_startup(self) -> None:
         Gtk.Application.do_startup(self)
         icons.register()
         self.load_css()
+        self.theme = ThemeManager()
 
     def do_activate(self) -> None:
         if self.window is None:
             config = load_config()
             if self._uri:
                 config.uri = self._uri
+            # Before the window exists, so it is never drawn with the wrong stylesheet.
+            if self.theme is not None:
+                self.theme.set_preference(config.color_scheme)
             self.window = VirTuxWindow(self, Libvirt(config.uri), config)
         self.window.present()
 

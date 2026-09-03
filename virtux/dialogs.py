@@ -19,7 +19,7 @@ from gi.repository import GLib, Gtk  # noqa: E402
 from . import __version__, icons  # noqa: E402
 from .backend import DomainDetails  # noqa: E402
 from .commands import ACCELS  # noqa: E402
-from .config import MAX_REFRESH, MIN_REFRESH, Config  # noqa: E402
+from .config import CHOICES, MAX_REFRESH, MIN_REFRESH, Config  # noqa: E402
 from .i18n import _  # noqa: E402
 
 
@@ -229,7 +229,7 @@ class SnapshotDialog:
 
 
 class PreferencesDialog:
-    """Edits the viewer command, connection URI and refresh interval."""
+    """Edits the appearance, viewer command, connection URI and refresh interval."""
 
     def __init__(
         self,
@@ -240,7 +240,24 @@ class PreferencesDialog:
         self._on_apply = on_apply
         self.window, box = _shell(parent, _("Preferences"), width=520)
 
+        # Same order as config.CHOICES, so the index is the stored value.
+        self._appearance = Gtk.DropDown.new_from_strings(
+            [_("Automatic"), _("Light"), _("Dark")]
+        )
+        self._appearance.set_selected(
+            CHOICES.index(config.color_scheme) if config.color_scheme in CHOICES else 0
+        )
+        _labelled(box, _("Appearance"), self._appearance)
+        appearance_hint = Gtk.Label(
+            label=_("“Automatic” follows the light or dark preference of the desktop."),
+            xalign=0.0,
+            wrap=True,
+        )
+        appearance_hint.add_css_class("dim-label")
+        box.append(appearance_hint)
+
         self._uri = Gtk.Entry(text=config.uri, activates_default=True)
+        self._uri.set_margin_top(6)
         _labelled(box, _("Connection URI"), self._uri)
         uri_hint = Gtk.Label(
             label=_("Changing this reconnects. Example: qemu:///system"),
@@ -282,6 +299,7 @@ class PreferencesDialog:
             uri=self._uri.get_text().strip() or Config().uri,
             viewer_command=self._viewer.get_text().strip() or Config().viewer_command,
             refresh_interval=int(self._interval.get_value()),
+            color_scheme=CHOICES[self._appearance.get_selected()],
         )
         self.window.close()
         self._on_apply(config)

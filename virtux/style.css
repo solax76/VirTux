@@ -19,13 +19,19 @@
 }
 
 .dim-label {
+  /* Only the opacity: a colour here would have to be theme-aware, and inheriting
+     the theme's own foreground already is. */
   opacity: 0.7;
-  color: var(--window-fg-color, @theme_bg_color);
 }
 
 .sidebar {
-  background-color: var(--window-bg-color, @theme_fg_color);
-  color: var(--window-fg-color, @theme_bg_color);
+  background-color: alpha(currentColor, 0.03);
+}
+
+/* The row a machine is selected on only gets a faint background from most themes,
+   so the name carries the emphasis. */
+row:selected .vm-name {
+  font-weight: bold;
 }
 
 .vm-title {

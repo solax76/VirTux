@@ -149,8 +149,11 @@ class VirTuxWindow(Gtk.ApplicationWindow):
         factory.connect("bind", self._bind_vm_row)
         factory.connect("unbind", self._unbind_row)
 
+        # No "navigation-sidebar" style class on purpose: themes attach a fixed
+        # sidebar foreground to it, and a theme that assumes a light surface then
+        # paints near-black labels onto our dark sidebar. Plain list rows inherit
+        # the foreground instead, which is right in both light and dark.
         self._vm_list = Gtk.ListView(model=self._vm_selection, factory=factory, vexpand=True)
-        self._vm_list.add_css_class("navigation-sidebar")
         box.append(Gtk.ScrolledWindow(child=self._vm_list, vexpand=True,
                                       hscrollbar_policy=Gtk.PolicyType.NEVER))
         return box
@@ -166,6 +169,7 @@ class VirTuxWindow(Gtk.ApplicationWindow):
         icon.set_pixel_size(20)
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         name = Gtk.Label(xalign=0.0, ellipsize=3)
+        name.add_css_class("vm-name")
         state = Gtk.Label(xalign=0.0)
         state.add_css_class("dim-label")
         text.append(name)
@@ -626,11 +630,17 @@ class VirTuxWindow(Gtk.ApplicationWindow):
     def _apply_config(self, config: Config) -> None:
         reconnect = config.uri != self.config.uri
         interval_changed = config.refresh_interval != self.config.refresh_interval
+        scheme_changed = config.color_scheme != self.config.color_scheme
         self.config = config
         try:
             save_config(config)
         except OSError as exc:
             self.notify_user(_("Cannot save preferences: {error}").format(error=exc), "error")
+
+        if scheme_changed:
+            application = self.get_application()
+            if application is not None and application.theme is not None:
+                application.theme.set_preference(config.color_scheme)
 
         if reconnect:
             self._selected = None
